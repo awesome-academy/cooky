@@ -1,5 +1,4 @@
 project_type: php
-url: https://localhost:8000
 build:
   general_test:
     image: framgiaciteam/laravel-workspace:latest
