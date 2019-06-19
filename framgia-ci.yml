@@ -13,17 +13,11 @@ build:
     prepare:
       - cp .env.civ3.example .env
       - composer install
-      - yarn install # L
+      - yarn install
       - framgia-ci test-connect mysql_test 3306 60
       - php artisan migrate --database=mysql_test
       - framgia-ci run --logs
 test:
-  phpunit:
-    ignore: false
-    command:
-      - php -dzend_extension=xdebug.so vendor/bin/phpunit
-        --coverage-clover=.framgia-ci-reports/coverage-clover.xml
-        --coverage-html=.framgia-ci-reports/coverage
   phpcs:
     ignore: false
     command: echo '' | phpcs --standard=Framgia --report-checkstyle=.framgia-ci-reports/phpcs.xml app
